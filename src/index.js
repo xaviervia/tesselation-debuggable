@@ -10,9 +10,11 @@ import seed from 'effects/seed'
 import setup from 'effects/setup'
 import view from 'effects/view'
 
+import debuggable from 'reducers/debuggable'
+
 const push = stream()
 
-const store = scan(reducer, initialState, push)
+const store = scan(debuggable(reducer), initialState, push)
 
 const effects = [localStorage, log, resize, seed, setup, view]
 
